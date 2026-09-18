@@ -16,7 +16,7 @@ export default function StartPage() {
           <p className="section-kicker">Start a project</p>
           <h1>Let’s find the constraint worth solving.</h1>
           <p>Tell us enough to make the first conversation useful. We’ll review the brand, the numbers and the opportunity before we speak.</p>
-          <div className="start-note"><span>Not ready for a brief?</span><a href="mailto:hello@claraverse.com">hello@claraverse.com</a></div>
+          <div className="start-note"><span>Not ready for a brief?</span><a href="mailto:hello@claraverse.in">hello@claraverse.in</a></div>
         </div>
         <ContactForm />
       </section>

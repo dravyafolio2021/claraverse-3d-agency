@@ -1,25 +1,31 @@
-'use client';
-
 import { ArrowDown, ArrowUpRight, MoveRight } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { HeroScene } from '@/components/hero-scene';
 import { SiteFooter } from '@/components/site-footer';
+
+const SELECTED_WORK = [
+  { client: 'GLOV Beauty', market: 'Beauty technology · United States', scope: 'Full-stack Shopify management, CRO & AOV strategy', result: '+18% AOV · 2.6× ROAS', image: '/work/glov.png', href: 'https://claraverse.in/portfolio/https-glovbeauty-com/' },
+  { client: 'ANS Shopping', market: 'Ethical fashion · Australia', scope: 'Shopify development & story-first UX strategy', result: '+29% AOV · 3.4× ROAS', image: '/work/ans.png', href: 'https://claraverse.in/portfolio/ans-shopping/' },
+  { client: 'Man Mandir', market: 'Premium handloom · India', scope: 'From Surat legacy brand to global DTC commerce', result: '+18% AOV · 2.6× ROAS', image: '/work/man-mandir.png', href: 'https://claraverse.in/portfolio/manmandir/' },
+  { client: 'Imperial Knots', market: 'Luxury lifestyle · Global', scope: 'Long-term digital growth partnership', result: '+42% CTR · 2.2× ROAS', image: '/work/imperial-knots.png', href: 'https://claraverse.in/portfolio/imperial-knots/' },
+];
 
 export default function Home() {
   return (
     <main className="site-shell">
       <nav className="topbar home-topbar" aria-label="Primary navigation">
         <a className="brand" href="#top" aria-label="Claraverse home">
-          <span className="brand-mark" aria-hidden="true">C</span>
-          <span>CLARAVERSE</span>
+          <Image className="brand-logo" src="/brand/claraverse-logo.svg" alt="Claraverse" width={146} height={33} priority />
         </a>
         <div className="nav-links" aria-label="Services">
           <a href="#expertise">Expertise</a>
           <a href="#work">Selected work</a>
           <a href="#insights">Insights</a>
         </div>
-        <a className="nav-cta" href="/start">
+        <Link className="nav-cta" href="/start">
           Start a project <ArrowUpRight size={15} strokeWidth={1.8} />
-        </a>
+        </Link>
       </nav>
 
       <section className="hero" id="top">
@@ -39,14 +45,14 @@ export default function Home() {
             <br />Built to scale. <em>Anywhere.</em>
           </h1>
           <p className="hero-deck">
-            We grow fashion and skincare brands across borders with performance
-            media, AI-powered creative and conversion-first commerce.
+            A founder-focused Shopify growth system for fashion and skincare—
+            connecting performance media, AI-powered creative and conversion-first commerce.
           </p>
           <div className="hero-actions">
-            <a className="primary-button" href="/start">
+            <Link className="primary-button" href="/start">
               Book a growth audit
               <ArrowUpRight size={18} strokeWidth={1.7} />
-            </a>
+            </Link>
             <a className="text-link" href="#system">
               See how we work <span aria-hidden="true">↗</span>
             </a>
@@ -101,7 +107,7 @@ export default function Home() {
               <p className="service-meta">Acquire</p>
               <h3>Performance<br />Marketing</h3>
               <p>Full-funnel paid media shaped around contribution margin—not vanity ROAS.</p>
-              <a href="/services/performance-marketing">Explore performance <MoveRight size={17} /></a>
+              <Link href="/services/performance-marketing">Explore performance <MoveRight size={17} /></Link>
             </div>
           </article>
           <article className="service-card violet">
@@ -110,7 +116,7 @@ export default function Home() {
               <p className="service-meta">Persuade</p>
               <h3>AI Video &<br />Creative</h3>
               <p>A high-velocity creative engine built to find new winning angles every week.</p>
-              <a href="/services/ai-creative">Explore creative <MoveRight size={17} /></a>
+              <Link href="/services/ai-creative">Explore creative <MoveRight size={17} /></Link>
             </div>
           </article>
           <article className="service-card acid-card">
@@ -119,33 +125,38 @@ export default function Home() {
               <p className="service-meta">Convert</p>
               <h3>CRO Commerce<br />Experiences</h3>
               <p>Research-led Shopify experiences that turn paid attention into profitable customers.</p>
-              <a href="/services/cro-commerce">Explore commerce <MoveRight size={17} /></a>
+              <Link href="/services/cro-commerce">Explore commerce <MoveRight size={17} /></Link>
             </div>
           </article>
         </div>
       </section>
 
       <section className="measurement-section" id="work">
-        <div className="section-index">03 / What we optimise</div>
+        <div className="section-index">03 / Selected work</div>
         <div className="measurement-heading">
-          <p className="section-kicker">The scorecard that matters</p>
-          <h2>We optimise the business behind the ads.</h2>
+          <p className="section-kicker">Proof across markets</p>
+          <h2>Built with founders.<br />Measured in the business.</h2>
         </div>
-        <div className="metric-grid">
-          {[
-            ['MER', 'Blended efficiency'],
-            ['CVR', 'Store conversion'],
-            ['AOV', 'Order economics'],
-            ['LTV', 'Customer value'],
-          ].map(([metric, label], index) => (
-            <div className="metric" key={metric}>
-              <span>0{index + 1}</span><strong>{metric}</strong><small>{label}</small>
-            </div>
+        <div className="work-grid">
+          {SELECTED_WORK.map((item, index) => (
+            <a className="work-card" href={item.href} target="_blank" rel="noreferrer" key={item.client}>
+              <div className="work-image">
+                <Image src={item.image} alt={`${item.client} ecommerce case study`} fill sizes="(max-width: 800px) 100vw, 50vw" />
+                <span>0{index + 1}</span>
+              </div>
+              <div className="work-card-copy">
+                <p>{item.market}</p>
+                <ArrowUpRight size={20} />
+                <h3>{item.client}</h3>
+                <span>{item.scope}</span>
+                <strong>{item.result}</strong>
+              </div>
+            </a>
           ))}
         </div>
         <p className="measurement-note">
-          No mystery dashboards. No disconnected teams. One operating rhythm,
-          with decisions grounded in commercial reality.
+          The system changes by brand. The operating principle does not: find the
+          constraint, ship the highest-leverage fix, and let each result sharpen the next move.
         </p>
       </section>
 
@@ -193,20 +204,20 @@ export default function Home() {
           <p className="section-kicker">Thinking for operators</p>
           <h2>Useful ideas.<br />No content theatre.</h2>
         </div>
-        <a className="featured-insight" href="/insights">
+        <Link className="featured-insight" href="/insights">
           <span>Field note 001</span>
           <h3>Why your next growth hire might be a creative operating system.</h3>
           <p>7 minute read</p>
           <ArrowUpRight size={24} />
-        </a>
+        </Link>
       </section>
 
       <section className="closing-section" id="contact">
         <p className="section-kicker acid">Start with the real constraint</p>
         <h2>What’s standing between<br />you and the next level?</h2>
-        <a className="closing-link" href="/start">
+        <Link className="closing-link" href="/start">
           Tell us where growth is stuck <ArrowUpRight size={34} strokeWidth={1.3} />
-        </a>
+        </Link>
       </section>
 
       <SiteFooter />

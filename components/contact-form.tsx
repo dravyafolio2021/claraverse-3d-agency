@@ -25,7 +25,7 @@ export function ContactForm() {
       if (!response.ok) throw new Error('submit-failed');
       setSent(true);
     } catch {
-      setError('We could not save your brief. Please try again or email hello@claraverse.com.');
+      setError('We could not save your brief. Please try again or email hello@claraverse.in.');
     } finally {
       setSending(false);
     }

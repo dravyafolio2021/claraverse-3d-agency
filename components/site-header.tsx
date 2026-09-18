@@ -1,20 +1,21 @@
 import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export function SiteHeader({ light = false }: { light?: boolean }) {
   return (
     <nav className={`topbar inner-header${light ? ' on-dark' : ''}`} aria-label="Primary navigation">
-      <a className="brand" href="/" aria-label="Claraverse home">
-        <span className="brand-mark" aria-hidden="true">C</span>
-        <span>CLARAVERSE</span>
-      </a>
+      <Link className="brand" href="/" aria-label="Claraverse home">
+        <Image className="brand-logo" src="/brand/claraverse-logo.svg" alt="Claraverse" width={146} height={33} />
+      </Link>
       <div className="nav-links">
-        <a href="/#expertise">Expertise</a>
-        <a href="/#work">Approach</a>
-        <a href="/insights">Insights</a>
+        <Link href="/#expertise">Expertise</Link>
+        <Link href="/#work">Selected work</Link>
+        <Link href="/insights">Insights</Link>
       </div>
-      <a className="nav-cta" href="/start">
+      <Link className="nav-cta" href="/start">
         Start a project <ArrowUpRight size={15} strokeWidth={1.8} />
-      </a>
+      </Link>
     </nav>
   );
 }

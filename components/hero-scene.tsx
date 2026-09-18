@@ -3,6 +3,7 @@
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
 import { MapPin } from 'lucide-react';
+import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 
@@ -11,17 +12,20 @@ type Market = {
   country: string;
   lat: number;
   lon: number;
+  client: string;
   category: string;
   services: string;
+  result: string;
+  image: string;
+  href: string;
 };
 
 const MARKETS: Market[] = [
-  { city: 'New York', country: 'United States', lat: 40.71, lon: -74.0, category: 'Fashion & skincare', services: 'Media · Creative · CRO' },
-  { city: 'London', country: 'United Kingdom', lat: 51.5, lon: -0.12, category: 'Fashion brands', services: 'Media · AI creative' },
-  { city: 'Dubai', country: 'United Arab Emirates', lat: 25.2, lon: 55.27, category: 'Beauty & luxury', services: 'Creative · Commerce' },
-  { city: 'Mumbai', country: 'India', lat: 19.07, lon: 72.87, category: 'Fashion & skincare', services: 'Full growth system' },
-  { city: 'Singapore', country: 'Singapore', lat: 1.35, lon: 103.81, category: 'Skincare brands', services: 'Media · CRO' },
-  { city: 'Sydney', country: 'Australia', lat: -33.86, lon: 151.2, category: 'Fashion brands', services: 'Creative · Performance' },
+  { city: 'Las Vegas', country: 'United States', lat: 36.17, lon: -115.14, client: 'GLOV Beauty', category: 'Beauty technology', services: 'Shopify management · CRO', result: '+18% AOV · 2.6× ROAS', image: '/work/glov.png', href: 'https://claraverse.in/portfolio/https-glovbeauty-com/' },
+  { city: 'Delray Beach', country: 'United States', lat: 26.46, lon: -80.07, client: 'Amala Beauty', category: 'Premium skincare', services: 'CRO · High-ticket funnels', result: 'Digital spa experience', image: '/work/amala.png', href: 'https://claraverse.in/portfolio/https-amalabeauty-com/' },
+  { city: 'Australia', country: 'Australia', lat: -33.87, lon: 151.21, client: 'ANS Shopping', category: 'Ethical fashion', services: 'Shopify development · UX', result: '+29% AOV · 3.4× ROAS', image: '/work/ans.png', href: 'https://claraverse.in/portfolio/ans-shopping/' },
+  { city: 'Surat', country: 'India', lat: 21.17, lon: 72.83, client: 'Man Mandir', category: 'Premium handloom', services: 'DTC commerce · Growth', result: '+18% AOV · 2.6× ROAS', image: '/work/man-mandir.png', href: 'https://claraverse.in/portfolio/manmandir/' },
+  { city: 'Gurugram', country: 'India', lat: 28.46, lon: 77.03, client: 'Imperial Knots', category: 'Luxury lifestyle', services: 'Digital growth retainer', result: '+42% CTR · 2.2× ROAS', image: '/work/imperial-knots.png', href: 'https://claraverse.in/portfolio/imperial-knots/' },
 ];
 
 function latLonVector(lat: number, lon: number, radius = 2.34) {
@@ -37,24 +41,21 @@ function latLonVector(lat: number, lon: number, radius = 2.34) {
 function nearestMarketFromTimezone() {
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase();
   if (timezone.includes('kolkata') || timezone.includes('calcutta')) return 3;
-  if (timezone.includes('dubai') || timezone.includes('riyadh')) return 2;
-  if (timezone.includes('singapore') || timezone.includes('hong_kong')) return 4;
-  if (timezone.includes('sydney') || timezone.includes('melbourne')) return 5;
+  if (timezone.includes('sydney') || timezone.includes('melbourne')) return 2;
   if (timezone.startsWith('america/')) return 0;
-  if (timezone.startsWith('europe/')) return 1;
   if (timezone.startsWith('asia/')) return 4;
-  return 1;
+  return 0;
 }
 
 function marketFromCountry(country: string | null) {
   if (!country) return nearestMarketFromTimezone();
   const code = country.toUpperCase();
   if (['US', 'CA', 'MX', 'BR', 'AR'].includes(code)) return 0;
-  if (['GB', 'IE', 'FR', 'DE', 'ES', 'IT', 'NL', 'SE', 'NO', 'DK'].includes(code)) return 1;
-  if (['AE', 'SA', 'QA', 'KW', 'BH', 'OM'].includes(code)) return 2;
+  if (['GB', 'IE', 'FR', 'DE', 'ES', 'IT', 'NL', 'SE', 'NO', 'DK'].includes(code)) return 0;
+  if (['AE', 'SA', 'QA', 'KW', 'BH', 'OM'].includes(code)) return 4;
   if (['IN', 'PK', 'BD', 'LK', 'NP'].includes(code)) return 3;
-  if (['SG', 'MY', 'ID', 'TH', 'PH', 'HK', 'JP', 'KR', 'CN'].includes(code)) return 4;
-  if (['AU', 'NZ'].includes(code)) return 5;
+  if (['SG', 'MY', 'ID', 'TH', 'PH', 'HK', 'JP', 'KR', 'CN'].includes(code)) return 2;
+  if (['AU', 'NZ'].includes(code)) return 2;
   return nearestMarketFromTimezone();
 }
 
@@ -149,8 +150,9 @@ export function HeroScene() {
     let cancelled = false;
     fetch('/api/geo')
       .then((response) => response.json())
-      .then((data: { country?: string | null }) => {
-        if (!cancelled) setActive(marketFromCountry(data.country ?? null));
+      .then((data) => {
+        const geo = data as { country?: string | null };
+        if (!cancelled) setActive(marketFromCountry(geo.country ?? null));
       })
       .catch(() => {
         if (!cancelled) setActive(nearestMarketFromTimezone());
@@ -164,15 +166,17 @@ export function HeroScene() {
         <DottedGlobe active={active} />
       </Canvas>
 
-      <div className="market-card">
+      <a className="market-card" href={market.href} target="_blank" rel="noreferrer" aria-label={`View the ${market.client} case study`}>
+        <Image src={market.image} alt="" width={246} height={78} />
         <div className="market-card-top">
-          <span><MapPin size={13} fill="currentColor" /> Nearest served market</span>
+          <span><MapPin size={13} fill="currentColor" /> Nearest proof point</span>
           <i>0{active + 1}</i>
         </div>
-        <h3>{market.city}</h3>
-        <p>{market.country}</p>
+        <h3>{market.client}</h3>
+        <p>{market.city} · {market.country}</p>
         <div className="market-card-meta"><span>{market.category}</span><span>{market.services}</span></div>
-      </div>
+        <strong>{market.result} <span aria-hidden="true">↗</span></strong>
+      </a>
 
       <div className="market-switcher" aria-label="Explore global markets">
         {MARKETS.map((item, index) => (
