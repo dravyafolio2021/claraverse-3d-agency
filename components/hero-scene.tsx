@@ -6,10 +6,10 @@ import { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
 const REGIONS = [
-  { label: 'USA', value: '30%', lat: 38.5, lon: -98.4, color: '#ff7a59' },
-  { label: 'Australia', value: '20%', lat: -25.3, lon: 133.8, color: '#f3d45f' },
-  { label: 'India', value: '30%', lat: 22.6, lon: 79.0, color: '#9cd46b' },
-  { label: 'Europe', value: '20%', lat: 50.3, lon: 10.4, color: '#69d1d2' },
+  { label: 'USA', value: '30%', lat: 38.5, lon: -98.4, color: '#e96952' },
+  { label: 'Australia', value: '20%', lat: -25.3, lon: 133.8, color: '#f1a27f' },
+  { label: 'India', value: '30%', lat: 22.6, lon: 79.0, color: '#df8fa2' },
+  { label: 'Europe', value: '20%', lat: 50.3, lon: 10.4, color: '#c65b55' },
 ];
 
 function latLonVector(lat: number, lon: number, radius = 2.04) {
@@ -46,7 +46,7 @@ function Atmosphere() {
           varying vec3 vNormal;
           void main() {
             float rim = pow(0.82 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.4);
-            gl_FragColor = vec4(0.18, 0.76, 0.92, rim * 0.72);
+            gl_FragColor = vec4(0.38, 0.68, 0.82, rim * 0.54);
           }
         `}
       />
@@ -70,30 +70,30 @@ function FloatingForms() {
     <group ref={group}>
       <Float speed={1.1} rotationIntensity={0.28} floatIntensity={0.55}>
         <RoundedBox args={[0.78, 0.78, 0.78]} radius={0.18} smoothness={5} position={[-3.15, 1.45, -0.2]} rotation={[0.35, 0.45, -0.2]}>
-          <meshStandardMaterial color="#ff785c" roughness={0.5} />
+          <meshStandardMaterial color="#e87359" roughness={0.5} />
         </RoundedBox>
       </Float>
       <Float speed={0.8} rotationIntensity={0.2} floatIntensity={0.42}>
         <mesh position={[3.3, 1.25, -0.35]} rotation={[0.9, 0.2, 0.45]}>
           <torusGeometry args={[0.62, 0.18, 28, 80]} />
-          <meshStandardMaterial color="#087f74" roughness={0.38} />
+          <meshStandardMaterial color="#54263a" roughness={0.38} />
         </mesh>
       </Float>
       <Float speed={1.35} rotationIntensity={0.18} floatIntensity={0.48}>
         <mesh position={[2.58, 2.18, -0.6]} rotation={[0.2, 0.2, 0.35]}>
           <capsuleGeometry args={[0.2, 1.05, 12, 28]} />
-          <meshStandardMaterial color="#f0d56a" roughness={0.52} />
+          <meshStandardMaterial color="#f3c09d" roughness={0.52} />
         </mesh>
       </Float>
       <Float speed={1} rotationIntensity={0.22} floatIntensity={0.38}>
         <mesh position={[-2.55, 2.38, -0.7]}>
           <sphereGeometry args={[0.35, 36, 36]} />
-          <meshStandardMaterial color="#9fca6a" roughness={0.42} />
+          <meshStandardMaterial color="#e7a184" roughness={0.42} />
         </mesh>
       </Float>
       <Float speed={1.55} rotationIntensity={0.24} floatIntensity={0.35}>
         <RoundedBox args={[0.48, 1.22, 0.48]} radius={0.2} smoothness={5} position={[3.75, -0.2, -0.5]} rotation={[0.15, 0.1, -0.5]}>
-          <meshStandardMaterial color="#81d8d3" roughness={0.5} />
+          <meshStandardMaterial color="#cf7c8c" roughness={0.5} />
         </RoundedBox>
       </Float>
     </group>
@@ -188,9 +188,9 @@ export function HeroScene() {
         shadows
       >
         <ambientLight intensity={1.45} />
-        <hemisphereLight color="#d9fbff" groundColor="#0b4f49" intensity={1.8} />
+        <hemisphereLight color="#fff4ed" groundColor="#5a2b3d" intensity={1.8} />
         <directionalLight position={[-4, 5, 5]} intensity={3.4} color="#fff4dd" castShadow />
-        <pointLight position={[4, 1, 3]} intensity={8} distance={12} color="#55d5d5" />
+        <pointLight position={[4, 1, 3]} intensity={8} distance={12} color="#ffb495" />
         <FloatingForms />
         <RealEarth />
       </Canvas>
