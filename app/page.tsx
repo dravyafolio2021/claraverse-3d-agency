@@ -41,8 +41,8 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">Global ecommerce growth partner</p>
           <h1>
-            Made to sell.
-            <br />Built to scale. <em>Anywhere.</em>
+            Build brands
+            <br />that move <em>markets.</em>
           </h1>
           <p className="hero-deck">
             A founder-focused Shopify growth system for fashion and skincare—
@@ -51,11 +51,25 @@ export default function Home() {
           <div className="hero-actions">
             <Link className="primary-button" href="/start">
               Book a growth audit
-              <ArrowUpRight size={18} strokeWidth={1.7} />
             </Link>
             <a className="text-link" href="#system">
               See how we work <span aria-hidden="true">↗</span>
             </a>
+          </div>
+        </div>
+
+        <div className="hero-proof" aria-hidden="true">
+          <p>Our client footprint</p>
+          <h2>One growth system.<br />Four active markets.</h2>
+          <div className="distribution-grid">
+            {[
+              ['USA', '30%'],
+              ['Australia', '20%'],
+              ['India', '30%'],
+              ['Europe', '20%'],
+            ].map(([region, share]) => (
+              <div key={region}><span>{region}</span><strong>{share}</strong></div>
+            ))}
           </div>
         </div>
 
