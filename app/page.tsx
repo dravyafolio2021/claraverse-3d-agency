@@ -24,7 +24,7 @@ export default function Home() {
           <a href="#insights">Insights</a>
         </div>
         <Link className="nav-cta" href="/start">
-          Start a project <ArrowUpRight size={15} strokeWidth={1.8} />
+          Get a growth plan <ArrowUpRight size={15} strokeWidth={1.8} />
         </Link>
       </nav>
 
@@ -33,49 +33,35 @@ export default function Home() {
         <div className="hero-grid" aria-hidden="true" />
         <div className="scene-wrap"><HeroScene /></div>
 
-        <div className="hero-kicker">
-          <span className="signal-dot" />
-          Serving fashion & skincare brands globally
-        </div>
-
         <div className="hero-copy">
-          <p className="eyebrow">Global ecommerce growth partner</p>
+          <p className="eyebrow"><span className="signal-dot" />Shopify growth, powered by AI</p>
           <h1>
-            Build brands
-            <br />that move <em>markets.</em>
+            Turn Shopify traffic
+            <br />into <em>profitable growth.</em>
           </h1>
           <p className="hero-deck">
-            A founder-focused Shopify growth system for fashion and skincare—
-            connecting performance media, AI-powered creative and conversion-first commerce.
+            We grow ecommerce brands with performance marketing, AI creative
+            and conversion-first Shopify experiences.
           </p>
           <div className="hero-actions">
             <Link className="primary-button" href="/start">
-              Book a growth audit
+              Get your growth plan
             </Link>
-            <a className="text-link" href="#system">
-              See how we work <span aria-hidden="true">↗</span>
+            <a className="text-link" href="#work">
+              See client results <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
 
-        <div className="hero-proof" aria-hidden="true">
-          <p>Our client footprint</p>
-          <h2>One growth system.<br />Four active markets.</h2>
-          <div className="distribution-grid">
-            {[
-              ['USA', '30%'],
-              ['Australia', '20%'],
-              ['India', '30%'],
-              ['Europe', '20%'],
-            ].map(([region, share]) => (
-              <div key={region}><span>{region}</span><strong>{share}</strong></div>
-            ))}
-          </div>
+        <div className="hero-proof">
+          <p className="live-orders-kicker"><span /> Live commerce pulse</p>
+          <h2>Live orders across<br /><em>our clients’ stores.</em></h2>
+          <p className="client-proof-note">Representative order activity · Revenue displayed in your currency</p>
         </div>
 
         <div className="hero-foot">
           <div className="capabilities" aria-label="Core capabilities">
-            <span>Global media</span><span>AI creative</span><span>Shopify CRO</span><span>Local insight</span>
+            <span>Paid media</span><span>AI creative</span><span>Shopify CRO</span><span>Global growth</span>
           </div>
           <a href="#expertise" className="scroll-cue">
             Scroll to explore <ArrowDown size={15} />
@@ -227,10 +213,10 @@ export default function Home() {
       </section>
 
       <section className="closing-section" id="contact">
-        <p className="section-kicker acid">Start with the real constraint</p>
-        <h2>What’s standing between<br />you and the next level?</h2>
+        <p className="section-kicker acid">Ready to grow?</p>
+        <h2>Turn more Shopify traffic<br />into profitable sales.</h2>
         <Link className="closing-link" href="/start">
-          Tell us where growth is stuck <ArrowUpRight size={34} strokeWidth={1.3} />
+          Get your growth plan <ArrowUpRight size={34} strokeWidth={1.3} />
         </Link>
       </section>
 

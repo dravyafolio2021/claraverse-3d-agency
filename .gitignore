@@ -36,3 +36,7 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+/.openai/hosting.json
+
+# unrelated local documents
+/The_Pet_Station_CRO_Audit_Proposal_Dravya_Bansal.docx
