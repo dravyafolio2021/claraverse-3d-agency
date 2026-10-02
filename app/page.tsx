@@ -1,6 +1,5 @@
 import { ArrowDown, ArrowUpRight, MoveRight } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { HeroScene } from '@/components/hero-scene';
 import { SiteFooter } from '@/components/site-footer';
 
@@ -23,9 +22,9 @@ export default function Home() {
           <a href="#work">Selected work</a>
           <a href="#insights">Insights</a>
         </div>
-        <Link className="nav-cta" href="/start">
+        <a className="nav-cta" href="/start">
           Get a growth plan <ArrowUpRight size={15} strokeWidth={1.8} />
-        </Link>
+        </a>
       </nav>
 
       <section className="hero" id="top">
@@ -44,9 +43,9 @@ export default function Home() {
             and conversion-first Shopify experiences.
           </p>
           <div className="hero-actions">
-            <Link className="primary-button" href="/start">
+            <a className="primary-button" href="/start">
               Get your growth plan
-            </Link>
+            </a>
             <a className="text-link" href="#work">
               See client results <span aria-hidden="true">↗</span>
             </a>
@@ -107,7 +106,7 @@ export default function Home() {
               <p className="service-meta">Acquire</p>
               <h3>Performance<br />Marketing</h3>
               <p>Full-funnel paid media shaped around contribution margin—not vanity ROAS.</p>
-              <Link href="/services/performance-marketing">Explore performance <MoveRight size={17} /></Link>
+              <a href="/services/performance-marketing">Explore performance <MoveRight size={17} /></a>
             </div>
           </article>
           <article className="service-card violet">
@@ -116,7 +115,7 @@ export default function Home() {
               <p className="service-meta">Persuade</p>
               <h3>AI Video &<br />Creative</h3>
               <p>A high-velocity creative engine built to find new winning angles every week.</p>
-              <Link href="/services/ai-creative">Explore creative <MoveRight size={17} /></Link>
+              <a href="/services/ai-creative">Explore creative <MoveRight size={17} /></a>
             </div>
           </article>
           <article className="service-card acid-card">
@@ -125,7 +124,7 @@ export default function Home() {
               <p className="service-meta">Convert</p>
               <h3>CRO Commerce<br />Experiences</h3>
               <p>Research-led Shopify experiences that turn paid attention into profitable customers.</p>
-              <Link href="/services/cro-commerce">Explore commerce <MoveRight size={17} /></Link>
+              <a href="/services/cro-commerce">Explore commerce <MoveRight size={17} /></a>
             </div>
           </article>
         </div>
@@ -204,20 +203,20 @@ export default function Home() {
           <p className="section-kicker">Thinking for operators</p>
           <h2>Useful ideas.<br />No content theatre.</h2>
         </div>
-        <Link className="featured-insight" href="/insights">
+        <a className="featured-insight" href="/insights">
           <span>Field note 001</span>
           <h3>Why your next growth hire might be a creative operating system.</h3>
           <p>7 minute read</p>
           <ArrowUpRight size={24} />
-        </Link>
+        </a>
       </section>
 
       <section className="closing-section" id="contact">
         <p className="section-kicker acid">Ready to grow?</p>
         <h2>Turn more Shopify traffic<br />into profitable sales.</h2>
-        <Link className="closing-link" href="/start">
+        <a className="closing-link" href="/start">
           Get your growth plan <ArrowUpRight size={34} strokeWidth={1.3} />
-        </Link>
+        </a>
       </section>
 
       <SiteFooter />

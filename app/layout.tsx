@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://claraverse-growth.dravyafolio.chatgpt.site'),
+  metadataBase: new URL('https://claraverse-3d-agency.vercel.app'),
   title: 'Claraverse — Ecommerce Growth Systems',
   description:
     'Performance marketing, AI-powered creative and conversion-first commerce for ambitious fashion and skincare brands.',
