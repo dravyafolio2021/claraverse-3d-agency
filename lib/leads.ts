@@ -1,6 +1,3 @@
-import { env } from 'cloudflare:workers';
-import { createLeadsTable } from '@/db/schema';
-
 type Lead = {
   firstName: string;
   lastName: string;
@@ -12,21 +9,31 @@ type Lead = {
   context: string;
 };
 
-function database() {
-  return (env as unknown as { DB: D1Database }).DB;
-}
+const LEAD_ENDPOINT = 'https://claraverse.in/wp-admin/admin-ajax.php';
 
 export async function saveLead(lead: Lead) {
-  const db = database();
-  await db.prepare(createLeadsTable).run();
-  await db.prepare(`
-    INSERT INTO leads (
-      id, first_name, last_name, email, brand, market, spend,
-      constraints_json, context, created_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `).bind(
-    crypto.randomUUID(), lead.firstName, lead.lastName, lead.email,
-    lead.brand, lead.market, lead.spend, JSON.stringify(lead.constraints),
-    lead.context, Date.now(),
-  ).run();
+  const form = new FormData();
+  form.set('action', 'cora_workspace_submit_lead');
+  form.set('names', `${lead.firstName} ${lead.lastName}`.trim());
+  form.set('email', lead.email);
+  form.set('scale', 'Monthly Retainer');
+  form.set('price', lead.spend);
+  form.set('notes', [
+    `Brand: ${lead.brand}`,
+    `Primary market: ${lead.market}`,
+    `Growth constraints: ${lead.constraints.join(', ') || 'Not specified'}`,
+    '',
+    lead.context,
+  ].join('\n'));
+
+  const response = await fetch(LEAD_ENDPOINT, {
+    method: 'POST',
+    body: form,
+    signal: AbortSignal.timeout(12_000),
+  });
+
+  const result = await response.json().catch(() => null) as { success?: boolean } | null;
+  if (!response.ok || result?.success !== true) {
+    throw new Error('Claraverse lead endpoint rejected the submission.');
+  }
 }
