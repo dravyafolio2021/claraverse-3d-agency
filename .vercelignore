@@ -1,0 +1,13 @@
+node_modules
+.git
+.next
+.vinext
+.vercel
+dist
+preview
+research
+*.pdf
+*.docx
+.env*
+.openai
+.wrangler

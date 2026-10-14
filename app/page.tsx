@@ -1,224 +1,82 @@
-import { ArrowDown, ArrowUpRight, MoveRight } from 'lucide-react';
-import Image from 'next/image';
-import { HeroScene } from '@/components/hero-scene';
+import Link from 'next/link';
+import { ArrowRight, ArrowUpRight, Check, Layers, Workflow, MousePointer2 } from 'lucide-react';
+import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
+import { CommerceExperience } from '@/components/commerce-experience';
+import { MarketContext } from '@/components/market-context';
+import { SITE_URL } from '@/lib/site';
+import type { Metadata } from 'next';
 
-const SELECTED_WORK = [
-  { client: 'GLOV Beauty', market: 'Beauty technology · United States', scope: 'Full-stack Shopify management, CRO & AOV strategy', result: '+18% AOV · 2.6× ROAS', image: '/work/glov.png', href: 'https://claraverse.in/portfolio/https-glovbeauty-com/' },
-  { client: 'ANS Shopping', market: 'Ethical fashion · Australia', scope: 'Shopify development & story-first UX strategy', result: '+29% AOV · 3.4× ROAS', image: '/work/ans.png', href: 'https://claraverse.in/portfolio/ans-shopping/' },
-  { client: 'Man Mandir', market: 'Premium handloom · India', scope: 'From Surat legacy brand to global DTC commerce', result: '+18% AOV · 2.6× ROAS', image: '/work/man-mandir.png', href: 'https://claraverse.in/portfolio/manmandir/' },
-  { client: 'Imperial Knots', market: 'Luxury lifestyle · Global', scope: 'Long-term digital growth partnership', result: '+42% CTR · 2.2× ROAS', image: '/work/imperial-knots.png', href: 'https://claraverse.in/portfolio/imperial-knots/' },
+export const metadata: Metadata = { alternates: { canonical: '/' } };
+
+const capabilities = [
+  { number: '01', label: 'Keep things moving', title: ['Management', '& support'], copy: 'A clear backlog. An accountable team. Ongoing development and maintenance that keep your store moving.', href: '/services/shopify-management', icon: Layers },
+  { number: '02', label: 'Make buying easier', title: ['Storefront', '& conversion'], copy: 'Thoughtful design and precise engineering, from product discovery to a confident checkout.', href: '/services/storefront-conversion', icon: MousePointer2 },
+  { number: '03', label: 'Connect the operation', title: ['Integrations', '& automation'], copy: 'Bring your inventory, fulfilment and customer systems together. Reduce the work between them.', href: '/services/integrations-automation', icon: Workflow },
+  { number: '04', label: 'Build for what’s next', title: ['Plus', '& expansion'], copy: 'Deeper checkout, wholesale and international capabilities when your business is ready for them.', href: '/services/shopify-plus', icon: ArrowUpRight },
+];
+
+const checks = [
+  ['Does checkout work through every payment path?', 'Test the payment methods your customers actually use, on supported devices. Follow failed and pending payments through confirmation and fulfilment. A payment icon alone does not tell you whether the journey works.'],
+  ['Does your mobile product page answer buying questions?', 'Check variants, sizing or ingredients, delivery, returns and the purchase action on a small screen. Prioritise improvements using real customer questions and observed behaviour.'],
+  ['Which apps create value—and which add complexity?', 'List each app’s job, owner, recurring cost and impact on the storefront. Look for overlapping functions and recurring failures before replacing or removing anything.'],
+  ['Where does your team repeat work by hand?', 'Follow one order from payment to dispatch and one product update from source to storefront. Find duplicate entry and exceptions. Define the right data and an owner before automating.'],
+  ['Can you explain and verify your last release?', 'Look for a preview, approval record, mobile and payment checks, a rollback plan and post-release observation. Clear release ownership is often the most useful first improvement.'],
 ];
 
 export default function Home() {
   return (
-    <main className="site-shell">
-      <nav className="topbar home-topbar" aria-label="Primary navigation">
-        <a className="brand" href="#top" aria-label="Claraverse home">
-          <Image className="brand-logo" src="/brand/claraverse-logo.svg" alt="Claraverse" width={146} height={33} priority />
-        </a>
-        <div className="nav-links" aria-label="Services">
-          <a href="#expertise">Expertise</a>
-          <a href="#work">Selected work</a>
-          <a href="#insights">Insights</a>
-        </div>
-        <a className="nav-cta" href="/start">
-          Get a growth plan <ArrowUpRight size={15} strokeWidth={1.8} />
-        </a>
-      </nav>
-
-      <section className="hero" id="top">
-        <div className="hero-stage">
-        <div className="hero-grid" aria-hidden="true" />
-        <div className="scene-wrap"><HeroScene /></div>
-
+    <main id="main-content" className="home-shell">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Claraverse', url: SITE_URL, logo: `${SITE_URL}/brand/claraverse-logo.svg`, description: 'Shopify development, optimization and ongoing management for established ecommerce brands.', email: 'hello@claraverse.in' }) }} />
+      <SiteHeader home />
+      <CommerceExperience>
         <div className="hero-copy">
-          <p className="eyebrow"><span className="signal-dot" />Shopify growth, powered by AI</p>
-          <h1>
-            Turn Shopify traffic
-            <br />into <em>profitable growth.</em>
-          </h1>
-          <p className="hero-deck">
-            We grow ecommerce brands with performance marketing, AI creative
-            and conversion-first Shopify experiences.
-          </p>
-          <div className="hero-actions">
-            <a className="primary-button" href="/start">
-              Get your growth plan
-            </a>
-            <a className="text-link" href="#work">
-              See client results <span aria-hidden="true">↗</span>
-            </a>
-          </div>
+          <p className="eyebrow"><span className="signal-dot" /> Your ongoing Shopify team</p>
+          <h1>Your Shopify store.<br /><em>Working better.</em></h1>
+          <p className="hero-deck">We design, engineer and manage Shopify stores for established brands. One team to improve the experience, connect your systems and keep your business moving.</p>
+          <div className="hero-actions"><Link className="primary-button" href="/start">Let’s improve your store <ArrowUpRight size={17} aria-hidden="true" /></Link><Link className="text-link" href="/approach">Explore our approach <ArrowRight size={16} aria-hidden="true" /></Link></div>
         </div>
+      </CommerceExperience>
 
-        <div className="hero-proof">
-          <p className="live-orders-kicker"><span /> Live commerce pulse</p>
-          <h2>Live orders across<br /><em>our clients’ stores.</em></h2>
-          <p className="client-proof-note">Representative order activity · Revenue displayed in your currency</p>
-        </div>
-
-        <div className="hero-foot">
-          <div className="capabilities" aria-label="Core capabilities">
-            <span>Paid media</span><span>AI creative</span><span>Shopify CRO</span><span>Global growth</span>
-          </div>
-          <a href="#expertise" className="scroll-cue">
-            Scroll to explore <ArrowDown size={15} />
-          </a>
-        </div>
-        </div>
+      <section className="section opening-section" id="expertise">
+        <p className="section-label">01 / A better way to run commerce</p>
+        <h2 className="section-heading">Your store has a roadmap.<br /><em>Let’s make it happen.</em></h2>
+        <p className="section-deck">Your next improvement should not get lost between an app, an agency and a developer. We bring the thinking and the execution together, so someone owns the whole journey.</p>
+        <div className="principle-row"><span><Check size={15} aria-hidden="true" /> Clear priorities</span><span><Check size={15} aria-hidden="true" /> Hands-on engineering</span><span><Check size={15} aria-hidden="true" /> Tested releases</span><span><Check size={15} aria-hidden="true" /> Ongoing improvement</span></div>
       </section>
 
-      <section className="manifesto-section" id="expertise">
-        <div className="section-index">01 / Why Claraverse</div>
-        <div className="manifesto-copy">
-          <p className="section-kicker">One accountable growth partner</p>
-          <h2>
-            Your customer doesn’t experience <em>channels.</em>
-            <br />They experience your brand.
-          </h2>
-          <p className="body-large">
-            Media without creative burns out. Creative without conversion leaks
-            intent. Stores without a growth system become expensive brochures.
-            We connect all three—so every learning makes the next decision smarter.
-          </p>
-        </div>
+      <section className="section capabilities-section" id="services">
+        <div className="section-topline"><p className="section-label">02 / Connected expertise</p><span>One platform. Every part of the operation.</span></div>
+        <div className="capability-grid">{capabilities.map(item => <Link className="capability-card" href={item.href} key={item.number}><div className="capability-top"><span>{item.number}</span><item.icon size={24} strokeWidth={1.25} aria-hidden="true" /></div><p className="eyebrow">{item.label}</p><h3>{item.title.map((line, index) => <span key={line}>{index > 0 ? <br /> : null}{line}</span>)}</h3><p className="capability-description">{item.copy}</p><span className="card-link">Explore this expertise <ArrowUpRight size={16} aria-hidden="true" /></span></Link>)}</div>
       </section>
 
-      <section className="system-section" id="system">
-        <div className="system-sticky">
-          <div className="section-index light">02 / The growth system</div>
-          <div className="system-heading">
-            <p className="section-kicker acid">Built to compound</p>
-            <h2>Three disciplines.<br />One growth loop.</h2>
-          </div>
-          <div className="system-orbit" aria-hidden="true">
-            <span className="orbit orbit-a" />
-            <span className="orbit orbit-b" />
-            <span className="orbit-core">C</span>
-          </div>
+      <section className="section experience-section" id="work">
+        <div className="section-topline"><p className="section-label">03 / Experience behind the work</p><span>Shopify & Shopify Plus</span></div>
+        <div className="experience-heading"><h2 className="section-heading">Built where commerce<br /><em>gets complex.</em></h2><div><p>Our delivery experience includes established Shopify and Plus stores, often as the technical team behind an agency partnership.</p><p>We bring that experience into the details that matter: a dependable storefront, connected systems and changes that your team can confidently approve.</p><Link className="text-link" href="/approach">Meet our way of working <ArrowUpRight size={16} aria-hidden="true" /></Link></div></div>
+        <div className="practice-grid">
+          <article className="practice-card"><div className="practice-visual storefront-visual" aria-hidden="true"><div className="mini-product"><div className="product-art"><span /><span /></div><div><i /><i /><i /><b /></div></div><span className="visual-caption">Product experience</span></div><p className="eyebrow">Customer-facing engineering</p><h3>Good design.<br />Better buying decisions.</h3><p>Theme development, merchandising and mobile journeys that help customers understand the product and move forward.</p></article>
+          <article className="practice-card"><div className="practice-visual operations-visual" aria-hidden="true"><span className="system-node">Shopify</span><i /><div><span className="system-node">Inventory</span><span className="system-node">Fulfilment</span><span className="system-node">Customers</span></div><span className="visual-caption">Connected workflows</span></div><p className="eyebrow">Operational thinking</p><h3>Less passing work.<br />More joined-up systems.</h3><p>Integrations and automation scoped around how your business actually handles products, orders and customer information.</p></article>
+          <article className="practice-card"><div className="practice-visual release-visual" aria-hidden="true"><span><i /> Prioritise the change</span><span><i /> Preview & test</span><span><i /> Approve & release</span><span className="visual-caption">An accountable process</span></div><p className="eyebrow">Delivery through partnerships</p><h3>Clear ownership.<br />From brief to release.</h3><p>Work alongside your commercial team and existing agency, with a shared roadmap and a deliberate release process.</p></article>
         </div>
-
-        <div className="service-stack">
-          <article className="service-card coral">
-            <span className="service-number">01</span>
-            <div>
-              <p className="service-meta">Acquire</p>
-              <h3>Performance<br />Marketing</h3>
-              <p>Full-funnel paid media shaped around contribution margin—not vanity ROAS.</p>
-              <a href="/services/performance-marketing">Explore performance <MoveRight size={17} /></a>
-            </div>
-          </article>
-          <article className="service-card violet">
-            <span className="service-number">02</span>
-            <div>
-              <p className="service-meta">Persuade</p>
-              <h3>AI Video &<br />Creative</h3>
-              <p>A high-velocity creative engine built to find new winning angles every week.</p>
-              <a href="/services/ai-creative">Explore creative <MoveRight size={17} /></a>
-            </div>
-          </article>
-          <article className="service-card acid-card">
-            <span className="service-number">03</span>
-            <div>
-              <p className="service-meta">Convert</p>
-              <h3>CRO Commerce<br />Experiences</h3>
-              <p>Research-led Shopify experiences that turn paid attention into profitable customers.</p>
-              <a href="/services/cro-commerce">Explore commerce <MoveRight size={17} /></a>
-            </div>
-          </article>
-        </div>
+        <p className="experience-note">Illustrative system views · Delivery experience includes work through agency partnerships.</p>
       </section>
 
-      <section className="measurement-section" id="work">
-        <div className="section-index">03 / Selected work</div>
-        <div className="measurement-heading">
-          <p className="section-kicker">Proof across markets</p>
-          <h2>Built with founders.<br />Measured in the business.</h2>
-        </div>
-        <div className="work-grid">
-          {SELECTED_WORK.map((item, index) => (
-            <a className="work-card" href={item.href} target="_blank" rel="noreferrer" key={item.client}>
-              <div className="work-image">
-                <Image src={item.image} alt={`${item.client} ecommerce case study`} fill sizes="(max-width: 800px) 100vw, 50vw" />
-                <span>0{index + 1}</span>
-              </div>
-              <div className="work-card-copy">
-                <p>{item.market}</p>
-                <ArrowUpRight size={20} />
-                <h3>{item.client}</h3>
-                <span>{item.scope}</span>
-                <strong>{item.result}</strong>
-              </div>
-            </a>
-          ))}
-        </div>
-        <p className="measurement-note">
-          The system changes by brand. The operating principle does not: find the
-          constraint, ship the highest-leverage fix, and let each result sharpen the next move.
-        </p>
+      <MarketContext />
+
+      <section className="section rhythm-section">
+        <p className="section-label">05 / The way we work</p><h2 className="section-heading">Senior thinking.<br /><em>Steady momentum.</em></h2><p className="section-deck">A useful roadmap is only the beginning. We take each priority through the decisions, testing and follow-through it needs.</p>
+        <ol className="process-grid">{[['Understand', 'Start with the store, the systems and the business constraint.'], ['Prioritise', 'Agree what matters, what comes next and who owns the decision.'], ['Build & release', 'Design, engineer, test and get approval before a change goes live.'], ['Review & improve', 'Look at the evidence, resolve exceptions and choose the next move.']].map(([title, copy], index) => <li className="process-step" key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p></li>)}</ol>
+        <Link className="text-link" href="/approach">Understand the operating model <ArrowUpRight size={16} aria-hidden="true" /></Link>
       </section>
 
-      <section className="process-section">
-        <div className="process-intro">
-          <div className="section-index light">04 / The operating rhythm</div>
-          <p className="section-kicker acid">Clarity creates speed</p>
-          <h2>Senior thinking.<br /><em>Weekly momentum.</em></h2>
-        </div>
-        <ol className="process-list">
-          {[
-            ['Diagnose', 'Find the constraint across acquisition, creative and conversion.'],
-            ['Architect', 'Build the measurement, testing and execution roadmap.'],
-            ['Create', 'Ship campaigns, assets and experiences at learning speed.'],
-            ['Compound', 'Turn every result into the next smarter experiment.'],
-          ].map(([title, copy], index) => (
-            <li key={title}>
-              <span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p>
-            </li>
-          ))}
-        </ol>
+      <section className="section value-section" id="store-check">
+        <div><p className="section-label">06 / Start with something useful</p><h2 className="section-heading">Five checks.<br /><em>A clearer next move.</em></h2><p className="section-deck">A practical starting point for your existing Shopify store. Read it, use it and bring us the questions worth solving.</p><span className="quiet-tag">No email required</span></div>
+        <div className="checklist">{checks.map(([title, copy], index) => <details key={title}><summary><span className="check-number">0{index + 1}</span><span>{title}</span><span className="check-plus" aria-hidden="true" /></summary><p>{copy}</p></details>)}<Link className="text-link" href="/insights/shopify-store-health-check">Read the full store-health guide <ArrowUpRight size={16} aria-hidden="true" /></Link></div>
       </section>
 
-      <section className="fit-section">
-        <div className="section-index">05 / Built for</div>
-        <div className="fit-copy">
-          <p className="section-kicker">Focused by design</p>
-          <h2>Fashion and skincare brands ready for their next operating level.</h2>
-        </div>
-        <div className="fit-panels">
-          <div>
-            <span>Good fit</span>
-            <p>You have product-market pull, real ambition and the appetite to test with discipline.</p>
-          </div>
-          <div>
-            <span>Not a fit</span>
-            <p>You want a pair of hands, a viral shortcut or growth at any cost.</p>
-          </div>
-        </div>
-      </section>
+      <section className="section insights-section" id="insights"><div className="section-topline"><p className="section-label">07 / Thinking for operators</p><Link className="text-link" href="/insights">All insights <ArrowRight size={16} aria-hidden="true" /></Link></div><div className="grid-two"><Link className="insight-card" href="/insights/shopify-store-health-check"><span className="eyebrow">Store operations</span><h3>Where to start when your Shopify store needs to work better.</h3><span className="card-link">Read the guide <ArrowUpRight size={17} aria-hidden="true" /></span></Link><Link className="insight-card" href="/insights/shopify-app-stack-review"><span className="eyebrow">Apps & integrations</span><h3>Before you add another app, review the stack you already have.</h3><span className="card-link">Read the guide <ArrowUpRight size={17} aria-hidden="true" /></span></Link></div></section>
 
-      <section className="insights-teaser" id="insights">
-        <div>
-          <div className="section-index">06 / Intelligence</div>
-          <p className="section-kicker">Thinking for operators</p>
-          <h2>Useful ideas.<br />No content theatre.</h2>
-        </div>
-        <a className="featured-insight" href="/insights">
-          <span>Field note 001</span>
-          <h3>Why your next growth hire might be a creative operating system.</h3>
-          <p>7 minute read</p>
-          <ArrowUpRight size={24} />
-        </a>
-      </section>
-
-      <section className="closing-section" id="contact">
-        <p className="section-kicker acid">Ready to grow?</p>
-        <h2>Turn more Shopify traffic<br />into profitable sales.</h2>
-        <a className="closing-link" href="/start">
-          Get your growth plan <ArrowUpRight size={34} strokeWidth={1.3} />
-        </a>
-      </section>
-
+      <section className="section closing-section"><p className="section-label">A useful next conversation</p><h2>Let’s make your store<br /><em>work better.</em></h2><p>Tell us what is getting in the way. We’ll start with the right questions.</p><Link className="primary-button" href="/start">Talk about your Shopify store <ArrowUpRight size={17} aria-hidden="true" /></Link></section>
       <SiteFooter />
     </main>
   );

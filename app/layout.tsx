@@ -1,47 +1,16 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
+import { SITE_URL } from '@/lib/site';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
-
 export const metadata: Metadata = {
-  metadataBase: new URL('https://claraverse-3d-agency.vercel.app'),
-  title: 'Claraverse — Ecommerce Growth Systems',
-  description:
-    'Performance marketing, AI-powered creative and conversion-first commerce for ambitious fashion and skincare brands.',
-  openGraph: {
-    title: 'Claraverse — Global Ecommerce Growth Partner',
-    description: 'Performance, creative and commerce for fashion and skincare brands.',
-    images: [{ url: '/og.png', width: 1731, height: 909, alt: 'Claraverse global ecommerce growth partner' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Claraverse — Global Ecommerce Growth Partner',
-    description: 'Performance, creative and commerce for fashion and skincare brands.',
-    images: ['/og.png'],
-  },
+  metadataBase: new URL(SITE_URL),
+  title: 'Shopify Development, Optimization & Management | Claraverse',
+  description: 'One ongoing team to design, engineer and manage your Shopify store. Storefront optimization, integrations, maintenance and Shopify Plus expertise for established brands.',
+  openGraph: { type: 'website', siteName: 'Claraverse', title: 'Your Shopify store. Working better.', description: 'Development, optimization and ongoing management for established Shopify brands.' },
+  twitter: { card: 'summary_large_image', title: 'Your Shopify store. Working better.', description: 'Your ongoing Shopify development and commerce operations team.' },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="en"><body className={GeistSans.variable}><a href="#main-content" className="skip-link">Skip to content</a>{children}</body></html>;
 }

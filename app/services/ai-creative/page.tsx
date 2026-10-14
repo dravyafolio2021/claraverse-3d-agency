@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ServiceTemplate } from '@/components/service-template';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/services/ai-creative' },
   title: 'AI Video & Creative — Claraverse',
   description: 'A high-velocity AI-assisted creative system for fashion and skincare growth.',
 };

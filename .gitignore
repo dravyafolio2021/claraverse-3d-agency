@@ -40,3 +40,8 @@ next-env.d.ts
 
 # unrelated local documents
 /The_Pet_Station_CRO_Audit_Proposal_Dravya_Bansal.docx
+/Invoice.pdf
+/Pet Station proposal.pdf
+/preview/
+/research/
+*.tsbuildinfo

@@ -1,25 +1,25 @@
-import type { Metadata } from 'next';
 import { ContactForm } from '@/components/contact-form';
 import { SiteHeader } from '@/components/site-header';
+import { SiteFooter } from '@/components/site-footer';
+import { pageMetadata } from '@/lib/site';
 
-export const metadata: Metadata = {
-  title: 'Start a Project — Claraverse',
-  description: 'Tell Claraverse where ecommerce growth is stuck and start a focused conversation.',
-};
+export const metadata = pageMetadata('Talk About Your Shopify Store', 'Start a focused conversation about Shopify management, storefront improvements, integrations or Shopify Plus. Prepare a short review brief for Claraverse.', '/start');
 
 export default function StartPage() {
   return (
-    <main className="start-page">
+    <div className="page-shell">
       <SiteHeader />
-      <section className="start-layout">
+      <main id="main-content" className="start-layout">
         <div className="start-intro">
-          <p className="section-kicker">Start a project</p>
-          <h1>Let’s find the constraint worth solving.</h1>
-          <p>Tell us enough to make the first conversation useful. We’ll review the brand, the numbers and the opportunity before we speak.</p>
-          <div className="start-note"><span>Not ready for a brief?</span><a href="mailto:hello@claraverse.in">hello@claraverse.in</a></div>
+          <p className="eyebrow">A useful next conversation</p>
+          <h1>What would make<br />your store<br /><em>work better?</em></h1>
+          <p>Tell us about the store you run and what is getting in the way. We’ll start by understanding the fit and the right next step.</p>
+          <p>This is a conversation about your business. Any detailed audit, delivery scope and commercial terms are agreed together.</p>
+          <div className="start-note"><span>Prefer to email us directly?</span><a href="mailto:hello@claraverse.in">hello@claraverse.in ↗</a><span>The form prepares an email draft for you to send.</span></div>
         </div>
         <ContactForm />
-      </section>
-    </main>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }

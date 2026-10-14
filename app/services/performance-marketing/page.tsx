@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ServiceTemplate } from '@/components/service-template';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/services/performance-marketing' },
   title: 'Performance Marketing — Claraverse',
   description: 'Full-funnel paid media for fashion and skincare brands, built around profitable growth.',
 };
