@@ -1,0 +1,7 @@
+import Link from 'next/link';
+import {notFound} from 'next/navigation';
+import {PageShell,PageIntro} from '@/components/PageShell';
+import {services} from '@/lib/site-content';
+export function generateStaticParams(){return services.map(({slug})=>({slug}));}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;return {title:`${services.find(x=>x.slug===slug)?.name||'Services'} — claraverse`};}
+export default async function Service({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const service=services.find(x=>x.slug===slug);if(!service)notFound();return <PageShell><PageIntro eyebrow={`services / ${service.name}`} title={service.title} description={service.intro}/><section className="section editorial-split" data-reveal><h2>the right foundation.<br/><span>the right details.</span></h2><div className="moving-border offering-panel"><span className="eyebrow">what we can work on</span><ul className="statement-list">{service.items.map(item=><li key={item}>{item}</li>)}</ul><Link className="text-link" href={`/quote?service=${service.slug}`}>Discuss your project ↗</Link></div></section><section className="section"><span className="eyebrow">how we approach it</span><div className="process-grid">{service.steps.map((step,index)=><div data-reveal key={step}><span>0{index+1}</span><p>{step}</p></div>)}</div></section></PageShell>;}

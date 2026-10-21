@@ -1,16 +1,13 @@
-import type { Metadata } from 'next';
-import { GeistSans } from 'geist/font/sans';
-import { SITE_URL } from '@/lib/site';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: 'Shopify Development, Optimization & Management | Claraverse',
-  description: 'One ongoing team to design, engineer and manage your Shopify store. Storefront optimization, integrations, maintenance and Shopify Plus expertise for established brands.',
-  openGraph: { type: 'website', siteName: 'Claraverse', title: 'Your Shopify store. Working better.', description: 'Development, optimization and ongoing management for established Shopify brands.' },
-  twitter: { card: 'summary_large_image', title: 'Your Shopify store. Working better.', description: 'Your ongoing Shopify development and commerce operations team.' },
+  metadataBase: new URL('https://claraverse.in'),
+  title: 'claraverse — premium ecommerce intelligence agency',
+  description: 'Premium ecommerce intelligence agency. Commerce architecture, Shopify Plus, connected operations, systems integration and automation across markets.',
+  icons: { icon: '/favicon.svg' },
 };
-
+export const viewport: Viewport = { themeColor: '#080d0b', width: 'device-width', initialScale: 1 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body className={GeistSans.variable}><a href="#main-content" className="skip-link">Skip to content</a>{children}</body></html>;
+  return <html lang="en" data-scroll-behavior="smooth"><body>{children}</body></html>;
 }
