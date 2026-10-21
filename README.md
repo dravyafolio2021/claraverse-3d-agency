@@ -25,19 +25,9 @@ Open http://localhost:3000. For a production check, run `npm run build`, then `n
 - `components/contact-form.tsx`: local enquiry-brief preparation.
 - `app/globals.css`: shared design tokens, layouts and responsive styles.
 
-## Repository and preview
+## Publishing
 
-Use this checkout at `/Users/shrutian/Desktop/Claraverse`. It retains the existing Git history and `origin` repository: `https://github.com/dravyafolio2021/claraverse-3d-agency`.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for branches, commits, checks and preview conventions. Current globe work lives on `feat/continuous-commerce-globe`. Pull requests run the quality workflow; development stays local unless publication is requested.
-
-## Continuous commerce globe
-
-The hero opens with an oversized earth that contracts to the centre on scroll. Its orientation is independent of scroll and survives pause, zoom and pointer interaction. One persistent rotation state replaces competing globe/camera rotation.
-
-The illustrative network has 36 geographic nodes and 42 routes, with frequent domestic traffic, longer cross-market journeys, tapered moving trails and pulses on arrival. Shared geography keeps dots and trails on the same spherical coordinates. The Shopify bag sits in the scene background. No order cards or labels cover the earth.
-
-The Natural Earth geography asset was reused from the earlier local Claraverse hero. `lib/commerce-network.ts` owns the sample locations and routes. The network is generated locally and does not fetch real orders.
+The existing Vercel project is `claraverse-3d-agency`. `vercel.json` selects the Next.js framework and build output. Verify the linked project before deploying. Local documents, environment files and generated caches are excluded from uploads.
 
 ## Content and lead handling
 

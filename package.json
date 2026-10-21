@@ -11,9 +11,7 @@
     "build:vercel": "next build",
     "start": "next start",
     "lint": "oxlint",
-    "format": "oxfmt",
-    "typecheck": "tsc --noEmit",
-    "lint:site": "oxlint app lib components/*.tsx"
+    "format": "oxfmt"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",

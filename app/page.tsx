@@ -31,10 +31,10 @@ export default function Home() {
       <SiteHeader home />
       <CommerceExperience>
         <div className="hero-copy">
-          <p className="eyebrow"><span className="signal-dot" /> Your ecommerce intelligence agency</p>
-          <h1>Commerce intelligence.<br /><em>Built into the operation.</em></h1>
-          <p className="hero-deck">We connect the architecture behind your business. Shopify, operations, integrations and intelligence — working as one, across every market.</p>
-          <div className="hero-actions"><Link className="primary-button" href="/start">Let’s connect your operation <ArrowUpRight size={17} aria-hidden="true" /></Link><Link className="text-link" href="#commerce-network">Explore connected commerce <ArrowRight size={16} aria-hidden="true" /></Link></div>
+          <p className="eyebrow"><span className="signal-dot" /> Your ongoing Shopify team</p>
+          <h1>Your Shopify store.<br /><em>Working better.</em></h1>
+          <p className="hero-deck">We design, engineer and manage Shopify stores for established brands. One team to improve the experience, connect your systems and keep your business moving.</p>
+          <div className="hero-actions"><Link className="primary-button" href="/start">Let’s improve your store <ArrowUpRight size={17} aria-hidden="true" /></Link><Link className="text-link" href="/approach">Explore our approach <ArrowRight size={16} aria-hidden="true" /></Link></div>
         </div>
       </CommerceExperience>
 
