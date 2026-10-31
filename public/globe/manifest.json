@@ -1,0 +1,13 @@
+{
+  "sourceBytes": 179824,
+  "desktop": {
+    "points": 9925,
+    "bytes": 79408,
+    "generationMs": 202.26
+  },
+  "mobile": {
+    "points": 5201,
+    "bytes": 41616,
+    "generationMs": 100.22
+  }
+}

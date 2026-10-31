@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-26",
+  "scope": "Local CPU, asset and production-bundle audit. No browser Core Web Vitals or GPU/FPS measurement.",
+  "geography": {
+    "desktop": {
+      "points": 9925,
+      "beforeBytes": 179824,
+      "afterBytes": 79408,
+      "beforeGzip": 62669,
+      "afterGzip": 78954,
+      "beforeCpuMedianMs": 175.29,
+      "afterCpuMedianMs": 0.22
+    },
+    "mobile": {
+      "points": 5201,
+      "beforeBytes": 179824,
+      "afterBytes": 41616,
+      "beforeGzip": 62669,
+      "afterGzip": 41503,
+      "beforeCpuMedianMs": 120.27,
+      "afterCpuMedianMs": 0.1
+    }
+  },
+  "portfolio": {
+    "commerce-scenes-v1": {
+      "beforeBytes": 2345426,
+      "afterBytes": 164976
+    },
+    "commerce-scenes-v2": {
+      "beforeBytes": 2116011,
+      "afterBytes": 127140
+    }
+  },
+  "threeChunks": {
+    "scope": "Two shared Three.js core/renderer chunks; excludes common app/runtime code",
+    "beforeBytes": 712387,
+    "beforeGzip": 179964,
+    "afterBytes": 518639,
+    "afterGzip": 128542
+  },
+  "checks": [
+    "All quantized points preserve original positions within 0.000038 scene units and weights within 0.000008.",
+    "Malformed/truncated geography is rejected.",
+    "36 symbolic stores, 60 nodes and 120 routes preserved.",
+    "All markets return finite focus views at mobile and desktop widths.",
+    "Hidden pickers remain raycastable with installed Three.js."
+  ],
+  "scene": {
+    "beforeRenderableGroups": 132,
+    "afterRenderableGroups": 10,
+    "scope": "Structural upper bound inferred from scene objects, not measured GPU draw calls. Actual runtime calls are available in globe-container data-draw-calls."
+  }
+}

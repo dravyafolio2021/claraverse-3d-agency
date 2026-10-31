@@ -1,0 +1,6 @@
+{
+  "base": "http://localhost:3001",
+  "checks": "SSR content, six services, local font preload, globe assets/cache headers, WebP sheets and enquiry page passed.",
+  "warmLocalHeaderMedianMs": 2.88,
+  "timingScope": "Unthrottled localhost production HTTP response headers; not a browser load, LCP or TTI measurement."
+}

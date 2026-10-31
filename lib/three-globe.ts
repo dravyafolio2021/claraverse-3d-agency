@@ -1,0 +1,2 @@
+// Restrict the asynchronous Three chunk to the classes used by this scene.
+export {WebGLRenderer,OrthographicCamera,Scene,Group,Vector3,Vector2,Mesh,SphereGeometry,MeshPhongMaterial,AmbientLight,DirectionalLight,ShaderMaterial,AdditiveBlending,BufferGeometry,Float32BufferAttribute,LineBasicMaterial,LineSegments,Points,InstancedMesh,RingGeometry,MeshBasicMaterial,DoubleSide,BufferAttribute,DynamicDrawUsage,Raycaster,MathUtils,Matrix4,Quaternion,Color,Material} from 'three';
