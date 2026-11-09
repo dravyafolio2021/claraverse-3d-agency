@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {services,serviceAliases,resolveService,findOffering} from '../lib/services.ts';
 
-const expected=[['Development',9],['Design',3],['Integrations',7],['Migration',5],['Growth',6]];
+const expected=[['Development',8],['Design',3],['Integrations',3],['Migration',4],['Growth',5]];
 assert.deepEqual(services.map(service=>[service.name,service.offerings.length]),expected);
 assert.equal(new Set(services.map(service=>service.slug)).size,5);
 let pairs=0;

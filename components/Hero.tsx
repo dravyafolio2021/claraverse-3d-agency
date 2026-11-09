@@ -3,7 +3,6 @@ import {Heading} from '@/components/Heading';
 import {useLayoutEffect,useEffect,useRef,useState} from 'react';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
-import {SiteHeader} from './SiteHeader';
 import {GlobeScene} from './GlobeScene';
 import {TechnologyLogos} from './TechnologyLogos';
 import {type MarketRegion} from '@/lib/order-events';
@@ -13,18 +12,18 @@ gsap.registerPlugin(ScrollTrigger);
 const clamp=(n:number)=>Math.min(1,Math.max(0,n));
 const smooth=(n:number)=>n*n*(3-2*n);
 export function Hero(){
- const stage=useRef<HTMLElement>(null),flight=useRef<HTMLAnchorElement>(null),target=useRef<HTMLSpanElement>(null),scrollProgress=useRef(0);
+ const stage=useRef<HTMLElement>(null),flight=useRef<HTMLAnchorElement>(null),scrollProgress=useRef(0);
  const [region,setRegion]=useState<MarketRegion>('global'),[paused,setPaused]=useState(false),[resetKey,setResetKey]=useState(0),[focusKey,setFocusKey]=useState(0);
  const selectMarket=(market:MarketRegion)=>{setRegion(market);setFocusKey(key=>key+1);};
  useEffect(()=>{if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)setPaused(true);},[]);
  useLayoutEffect(()=>{
-  const element=stage.current,wordmark=flight.current,destination=target.current;if(!element||!wordmark||!destination)return;
+  const element=stage.current,wordmark=flight.current,destination=document.getElementById('site-header-brand');if(!element||!wordmark||!destination)return;
   let alive=true,dx=0,dy=0,small=1,originX=0,originY=0,originWidth=1;
   const state={progress:0};
   const paint=()=>{
    const p=clamp(state.progress),t=smooth(clamp((p-.02)/.38)),fill=smooth(clamp((p-.4)/.24));
    scrollProgress.current=p;
-   // The floating header changes width while scrolling. Read its live target
+   // Read the shared header's live target
    // before writing the flight transform, so the wordmark docks into its cell.
    if(p<.41){const to=destination.getBoundingClientRect();dx=to.left+to.width/2-originX;dy=to.top+to.height/2-originY;small=to.width/originWidth;}
    wordmark.style.setProperty('--tx',`${dx*t}px`);wordmark.style.setProperty('--ty',`${dy*t}px`);wordmark.style.setProperty('--scale',String(1+(small-1)*t));
@@ -50,7 +49,7 @@ export function Hero(){
   measure();window.addEventListener('resize',measure);document.fonts.ready.then(()=>{if(alive){measure();ScrollTrigger.refresh();}});
   return()=>{alive=false;headerResize.disconnect();context.revert();window.removeEventListener('resize',measure);document.documentElement.style.removeProperty('--scroll-reveal');document.documentElement.style.removeProperty('--hero-progress');document.documentElement.style.removeProperty('--brand-liquid-clip');};
  },[]);
- return <><SiteHeader hero targetRef={target}/><a href="#top" className="brand-flight" ref={flight} aria-label="claraverse — back to top"><span className="brand-flight__wordmark">claraverse</span><span className="brand-flight__descriptor">Shopify Studio</span></a>
+ return <><a href="#top" className="brand-flight" ref={flight} aria-label="claraverse — back to top"><span className="brand-flight__wordmark">claraverse</span><span className="brand-flight__descriptor">Shopify Studio</span></a>
  <section id="top" ref={stage} className="hero-section" data-phase="intro"><h1 className="sr-only">claraverse — premium ecommerce intelligence agency</h1><div id="operations" className="operations-anchor" aria-hidden="true"/><div className="hero-sticky">
   <div className="commerce-watermark" aria-hidden="true"><img src="/shopify-bag.svg" alt="" width="890" height="1010"/></div><div className="hero-grain" aria-hidden="true"/><div className="hero-glow" aria-hidden="true"/>
   <div className="hero-intro"><div className="hero-meta"><span>✳</span> ecommerce intelligence. independently engineered.</div><div className="hero-technologies"><TechnologyLogos/></div><div className="hero-statement"><p>the intelligence behind your commerce.</p><span>highly efficient commerce. connected from storefront to fulfilment.</span><a href="#operations" className="hero-explore">Explore connected commerce <span>↓</span></a></div></div>

@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-01",
+  "mode": "production build on temporary local port",
+  "pages": 53,
+  "service_detail_pages": 30,
+  "prefilled_enquiry_combinations": 30,
+  "checks": [
+    "Every sitemap page and contact returns HTTP 200",
+    "One h1 per page",
+    "Unique IDs and no nested links",
+    "ARIA control targets exist",
+    "All internal links and fragments resolve",
+    "All specific service enquiries preselect the correct pair",
+    "Unknown and mismatched service URLs return 404",
+    "Invalid service/offering API submission returns 400 without saving",
+    "One shared header outside the route main on all 53 pages",
+    "One brand docking target per page; travelling wordmark only on homepage",
+    "Always-visible desktop navigation is not inert",
+    "Header CSS uses native sticky positioning with no floating-width or auto-hide rules"
+  ],
+  "visual_browser_review": "not performed; browser access unavailable"
+}

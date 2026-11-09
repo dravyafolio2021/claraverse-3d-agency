@@ -1,4 +1,5 @@
 export const homeFaqs=[
+ {id:'industries',question:'Which industries do you work with?',answer:'We focus exclusively on Beauty, Fashion, Wellness and Petcare. Our services connect each sector’s customer journeys, product information and business operations.',link:{href:'/industries',label:'Explore our four specialisms'}},
  {
   id:'services',question:'What can you help our Shopify business with?',
   answer:'We connect the customer experience with the operation behind it. Our five service areas cover development, design, integrations, migration and growth — from a distinctive storefront to the product, inventory and customer systems your team uses every day.',

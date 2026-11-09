@@ -31,11 +31,6 @@ const definitions:Omit<Service,'items'>[]=[
     "description": "Develop a flexible, maintainable storefront with reusable sections, clear product journeys and room for your team to create."
    },
    {
-    "slug": "mobile-apps",
-    "name": "Shopify Mobile Apps",
-    "description": "Extend the customer experience into a mobile app, with a clear role for product discovery, accounts and repeat purchases."
-   },
-   {
     "slug": "ai-storefronts",
     "name": "Shopify AI Storefronts",
     "description": "Create useful AI-assisted discovery and shopping experiences grounded in your product information, with clear paths to human help."
@@ -122,11 +117,6 @@ const definitions:Omit<Service,'items'>[]=[
     "description": "Connect commerce with finance, inventory and order management, with clear rules for data ownership and reconciliation."
    },
    {
-    "slug": "pim",
-    "name": "Shopify PIM Integrations",
-    "description": "Connect structured product information, attributes and media so your catalog stays consistent across systems and sales channels."
-   },
-   {
     "slug": "crm",
     "name": "Shopify CRM Integrations",
     "description": "Connect customer and order information with your CRM to support more informed service and customer relationships."
@@ -135,21 +125,6 @@ const definitions:Omit<Service,'items'>[]=[
     "slug": "amazon",
     "name": "Shopify Amazon Integration",
     "description": "Coordinate marketplace product, inventory and order workflows with your Shopify operation and the systems behind it."
-   },
-   {
-    "slug": "przelewy24",
-    "name": "Przelewy24 Integration",
-    "description": "Plan and implement the payment connection for your market, including payment states, testing and reconciliation requirements."
-   },
-   {
-    "slug": "inpost",
-    "name": "InPost Integration",
-    "description": "Connect delivery and collection-point journeys with checkout, fulfilment and the information your team needs to manage orders."
-   },
-   {
-    "slug": "shipment",
-    "name": "Shipment Integration",
-    "description": "Connect carriers and fulfilment partners around rates, labels, tracking, delivery updates and exception handling."
    }
   ]
  },
@@ -185,11 +160,6 @@ const definitions:Omit<Service,'items'>[]=[
     "description": "Map the existing catalog, customer experience and connected systems into a clear Shopify migration and launch plan."
    },
    {
-    "slug": "shopware",
-    "name": "Shopware to Shopify",
-    "description": "Assess product data, content and operational dependencies, then rebuild and validate the journeys needed for your Shopify launch."
-   },
-   {
     "slug": "wordpress",
     "name": "WordPress to Shopify",
     "description": "Plan how your content, commerce journeys and existing URLs move into Shopify, with a clear approach to redirects and ownership."
@@ -216,11 +186,6 @@ const definitions:Omit<Service,'items'>[]=[
     "slug": "conversion-rate-optimisation",
     "name": "Conversion Rate Optimisation",
     "description": "Use customer behaviour and journey reviews to prioritise changes, plan experiments and assess their commercial effect."
-   },
-   {
-    "slug": "plytix",
-    "name": "Plytix — PIM for Shopify",
-    "description": "Improve the structure and consistency of product content with a catalog workflow connecting Plytix and your Shopify operation."
    },
    {
     "slug": "klaviyo",

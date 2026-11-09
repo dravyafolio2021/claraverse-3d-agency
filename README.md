@@ -5,11 +5,12 @@ The persistent local Next.js project for the Claraverse Shopify and Shopify Plus
 ## Local development
 
 ```sh
-npm ci
+npm ci --ignore-scripts
+cp .env.example .env.local
 npm run dev -- --port 3000
 ```
 
-Preview: http://localhost:3000. Continue developing this checkout and reuse the preview tab. No hosting is configured.
+Add the Cora secret and publishable keys to the ignored .env.local file before starting the local preview at http://localhost:3000. Cora builds the configured GitHub branch as a static site.
 
 ## Website
 
@@ -25,11 +26,11 @@ All showcased projects are explicitly labelled concept studies. Order events in 
 
 ## Quote requests
 
-The quote form posts to `/api/quote`, validates required fields and saves requests in the ignored, local `.data/quotes.jsonl` file with a reference number. There is no email, CRM or external transmission integration. Preserve this data when moving the project; do not commit it.
+The build reads the published Request a Quote schema using the Cora SDK. The browser submits to Cora with the publishable key. The server key belongs in the build environment. Preserve any historical records in the ignored `.data/quotes.jsonl` file.
 
 ## Verification
 
-`npx tsc --noEmit` checks types. `npm run build` checks all routes; stop the dev server first because both use `.next`, then restart the same local preview.
+`npm run lint` checks types. Stop the development server and run `CLARAVERSE_STATIC_EXPORT=1 npm run build` to reproduce the Cora export. Verify that `out/index.html` exists before pushing.
 
 Dependencies are locked in `package-lock.json`. The PostCSS override keeps the recovered Next.js major version on a patched compatible PostCSS version.
 

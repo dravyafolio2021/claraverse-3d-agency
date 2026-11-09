@@ -32,7 +32,7 @@ export function SmoothScroll(){
     const lenis=new Lenis({
      lerp:0.16,wheelMultiplier:0.94,smoothWheel:true,syncTouch:false,
      anchors:true,stopInertiaOnNavigate:true,respectReducedMotion:true,
-     prevent:node=>node.matches('.site-menu__navigation,.site-menu__panel,textarea,select,[data-lenis-prevent]'),
+     prevent:node=>node.matches('.site-menu__secondary,.site-menu__navigation.is-open,textarea,select,[data-lenis-prevent]'),
     });
     instance=lenis;activePageScroll=lenis;
     const update=()=>ScrollTrigger.update();

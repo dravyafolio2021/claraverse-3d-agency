@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-01",
+  "page": "/about",
+  "revision": "Visual industry, principles and engagement sections; removed duplicate closing CTA",
+  "production_build": "passed",
+  "typescript": "passed",
+  "h1_count": 1,
+  "principles": 6,
+  "process_phases": 3,
+  "industry_tiles": 4,
+  "engagement_options": 3,
+  "bounded_parallax_scenes": 13,
+  "existing_sculpture_instances": 11,
+  "photo_backed_industry_tiles": 2,
+  "sculpture_backed_industry_tiles": 2,
+  "metrics": {
+    "projects": "24",
+    "industries": "4",
+    "satisfaction": "92",
+    "experience": "4"
+  },
+  "checks": [
+    "Unique IDs and valid ARIA targets",
+    "Four industry links and the services and quote links returned HTTP 200",
+    "Referenced local photography and WebP sculpture files exist and returned HTTP 200",
+    "Six principles and three engagements have separately bounded art stages and concise captions",
+    "About-specific closing invitation removed; shared footer retained",
+    "Active development preview returns HTTP 200"
+  ],
+  "visual_browser_review": "not performed; local browser access unavailable"
+}

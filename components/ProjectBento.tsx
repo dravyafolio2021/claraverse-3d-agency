@@ -22,7 +22,10 @@ function StorefrontDevice({slug,kind}:{slug:string;kind:'desktop'|'phone'|'table
  </div>;
 }
 
-export function ProjectBento(){
+export function ProjectBento({variant='section'}:{variant?:'section'|'page'}){
+ const isPage=variant==='page';
+ const titleId=isPage?'works-title':'project-bento-title';
+ const noteId=isPage?'works-note':'project-bento-note';
  const host=useRef<HTMLElement>(null);
  useLayoutEffect(()=>{
   const element=host.current;if(!element)return;
@@ -35,17 +38,17 @@ export function ProjectBento(){
   return()=>media.revert();
  },[]);
 
- return <section id="project-spotlight" className="project-bento" ref={host} aria-labelledby="project-bento-title" aria-describedby="project-bento-note">
-  <header className="project-bento__intro"><div><span className="eyebrow">a closer look / the concept collection</span><Heading id="project-bento-title">work, in perspective.</Heading></div><div><p>The experience, up close.<br/>The connected thinking behind it.</p><p className="project-bento__preview-note" id="project-bento-note">Concept previews · delivered client work to follow.</p></div></header>
-  <div className="project-bento__grid">{projects.map((project,index)=>{
+ return <section id={isPage?'works-collection':'project-spotlight'} className={`project-bento${isPage?' project-bento--page':''}`} ref={host} aria-labelledby={titleId} aria-describedby={noteId}>
+  <header className="project-bento__intro"><div><span className="eyebrow">{isPage?'selected work / the concept collection':'a closer look / the concept collection'}</span><Heading as={isPage?'h1':'h2'} mode={isPage?'load':'scroll'} id={titleId}>{isPage?'Featured Stores':'work, in perspective.'}</Heading></div><div><p>{isPage?<>Distinctive storefronts.<br/>Connected thinking, from discovery to delivery.</>:<>The experience, up close.<br/>The connected thinking behind it.</>}</p><p className="project-bento__preview-note" id={noteId}>Concept previews · delivered client work to follow.</p></div></header>
+  <div className="project-bento__grid" data-count={projects.length}>{projects.map((project,index)=>{
    const direction=portfolioDirections[project.slug];
    const device=index===0?'desktop':index===2?'phone':index===4?'tablet':null;
    return <Link key={project.slug} href={`/work/${project.slug}`} className={`project-bento__card project-bento__card--${project.slug}${index===0?' project-bento__card--feature':''}`} aria-label={`Explore ${project.name} — ${project.sector} concept study`}>
     <div className="project-bento__art" aria-hidden="true"><div className="project-bento__scene" style={portfolioSceneStyle(project.slug)}><div className="folio-scene"/></div><div className="project-bento__scrim"/>{device?<StorefrontDevice slug={project.slug} kind={device}/>:null}</div>
-    <div className="project-bento__top"><div><Heading as="h3">{project.name}</Heading><p>{project.sector}</p></div><span className="project-bento__index" aria-hidden="true">{pad(index+1)} / concept</span></div>
+    <div className="project-bento__top"><div><Heading as={isPage?'h2':'h3'}>{project.name}</Heading><p>{project.sector}</p></div><span className="project-bento__index" aria-hidden="true">{pad(index+1)} / concept</span></div>
     <div className="project-bento__bottom"><span>{direction.scope[0]}</span><span className="project-bento__action">View project</span></div>
    </Link>;
   })}</div>
-  <div className="project-bento__end"><p>Original concept studies. Client identities and case studies will replace these previews.</p><Link href="/work" className="text-link">Explore the collection</Link></div>
+  <div className="project-bento__end"><p>Original concept studies. Client identities and case studies will replace these previews.</p><Link href={isPage?'/quote':'/work'} className="text-link">{isPage?'Discuss your project':'Explore the collection'}</Link></div>
  </section>;
 }

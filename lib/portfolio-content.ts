@@ -17,6 +17,7 @@ export function portfolioSceneStyle(slug:string):CSSProperties{
 // A six-file fan stays bounded: the opposite file rests behind the centre
 // instead of pushing a third position beyond the right edge.
 export function folderPlacement(index:number,active:number,count:number){
+ if(count===2){const slot=index===active?0:index<active?-1:1;return {x:slot*38,angle:slot*7,y:Math.abs(slot)*13,layer:10-Math.abs(slot),depth:Math.abs(slot)};}
  let distance=(index-active+count)%count;
  if(distance>count/2)distance-=count;
  const opposite=count%2===0&&distance===count/2;
